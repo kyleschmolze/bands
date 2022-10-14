@@ -13,9 +13,25 @@ describe Band do
   describe "the #members method" do
     it "can store an array of band members" do
       band = Band.new
-      band.members = ["John", "Paul", "George"]
+      band.members = ["john", "paul", "george"]
       expect(band.members.length).to eq(4)
-      expect(band.members).to eq(["John", "Paul", "George", "Ringo"])
+      expect(band.members).to eq(["john", "paul", "george", "ringo"])
+    end
+  end
+
+  describe "the #capitalized_members method" do
+    it "capitalizes the first letter of each band member" do
+      band = Band.new
+      band.members = ["john", "paul", "george", "ringo"]
+      expect(band.capitalized_members).to eq(["John", "Paul", "George", "Ringo"])
+    end
+  end
+
+  describe 'the #youtube_url method' do
+    it 'returns a youtube url for the band' do
+      band = Band.new
+      band.name = 'The Beatles'
+      expect(band.youtube_url).to eq('https://www.youtube.com/results?search_query=The+Beatles')
     end
   end
 end
