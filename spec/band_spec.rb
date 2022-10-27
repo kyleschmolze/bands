@@ -14,6 +14,7 @@ describe Band do
     it "can store an array of band members" do
       band = Band.new
       band.members = ["john", "paul", "george"]
+      band.members << "ringo"
       expect(band.members.length).to eq(4)
       expect(band.members).to eq(["john", "paul", "george", "ringo"])
     end
@@ -27,11 +28,32 @@ describe Band do
     end
   end
 
-  describe 'the #youtube_url method' do
-    it 'returns a youtube url for the band' do
+  describe 'the #albums method' do
+    it 'returns an array of albums' do
       band = Band.new
       band.name = 'The Beatles'
-      expect(band.youtube_url).to eq('https://www.youtube.com/results?search_query=The+Beatles')
+      albums = band.albums
+      expect(albums).to be_an(Array)
+      expect(albums).to include 'I Saw Her Standing There'
+      expect(albums).to include '1'
+    end
+
+    describe 'when given a min_year' do
+      it 'excludes early albums' do
+        band = Band.new
+        band.name = 'The Beatles'
+        albums = band.albums(2005)
+        expect(albums).not_to include '1'
+      end
+    end
+
+    describe 'when given a max_year' do
+      it 'excludes late albums' do
+        band = Band.new
+        band.name = 'The Beatles'
+        albums = band.albums(nil, 2005)
+        expect(albums).not_to include 'I Saw Her Standing There'
+      end
     end
   end
 end
