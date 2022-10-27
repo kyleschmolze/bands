@@ -32,11 +32,11 @@ To make an API request in Ruby, you can either use the (confusing) built in Ruby
 2. Install HTTParty with `gem install httparty`.
 3. Add `require 'httparty'` to the top of `band.rb`.
 4. Write a `:albums` method for `band.rb`, which makes the API call using HTTParty and returns this list of albums.
-  - If the API call succeeds, the `:albums` method should return the exact response that you get back from TheAudioDB.
-  - If the API call fails, the `:albums` method should return `nil`.
 
 Bonus: Instead of returning the exact API response from TheAudioDB (with album names and the year they were released), manipulate your response first so that the `:albums` method only returns an array of the titles of the albums only.
 
-Double bonus: Add two optional arguments to `:albums` which allow you to specify a starting year and/or an ending year. Only return the titles of albums which were published in that year.
+Double bonus: What happens if the band name is total jibberish (e.g. "jifes93svidl")? Can your method return some intelligent response when the API call "fails"?
 
-Triple bonus: Write a test or two for the `:albums` method.
+Triple bonus: Add two optional arguments to `:albums` which allow you to specify a starting year and/or an ending year. Only return the titles of albums which were published in that year.
+
+Home run: Write a test or two for the `:albums` method.
