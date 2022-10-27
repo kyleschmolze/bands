@@ -26,12 +26,4 @@ describe Band do
       expect(band.capitalized_members).to eq(["John", "Paul", "George", "Ringo"])
     end
   end
-
-  describe 'the #youtube_url method' do
-    it 'returns a youtube url for the band' do
-      band = Band.new
-      band.name = 'The Beatles'
-      expect(band.youtube_url).to eq('https://www.youtube.com/results?search_query=The+Beatles')
-    end
-  end
 end
